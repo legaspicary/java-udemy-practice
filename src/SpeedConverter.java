@@ -1,5 +1,5 @@
 public class SpeedConverter {
-	public static double KMH_PER_MPH = 1.609;
+	public static final double KMH_PER_MPH = 1.609;
 
 	public static long toMilesPerHour(double kilometersPerHour) {
 		long res = -1;
