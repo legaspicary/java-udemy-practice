@@ -5,6 +5,7 @@ public class Main {
 		SpeedConverter.printConversion(1.54);
 		MegaBytesConverter.printMegaBytesAndKiloBytes(2500);
 		System.out.println(BarkingDog.shouldWakeUp(true, 8));
+		System.out.println(LeapYear.isLeapYear(-1200));
 	}
 
 }
