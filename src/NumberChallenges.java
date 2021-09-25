@@ -171,7 +171,27 @@ public class NumberChallenges {
 
 	public static boolean canPack(int bigCount, int smallCount, int goal) {
 		boolean isValid = (bigCount >= 0 && smallCount >= 0 && goal >= 0);
-		// TODO: handle when small count is zero but big count is not
-		return isValid && (goal % 5 == 0 && bigCount >= (goal / 5)) || (5 * bigCount) + smallCount >= goal;
+		return isValid && ((goal % 5 == 0 && (bigCount >= (goal / 5) || goal == smallCount))
+				|| (smallCount != 0 && (5 * bigCount) + smallCount >= goal) && goal % 5 <= smallCount);
+	}
+
+	public static int getLargestPrime(int number) {
+		int largestPrime = -1;
+		if (number > 1) {
+			for (int i = 2; i <= number; i++) {
+				boolean isPrime = true;
+				// logic for checking if prime
+				for (int j = 2; j < i; j++) {
+					if (i % j == 0) {
+						isPrime = false;
+						break;
+					}
+				}
+				if (number % i == 0 && isPrime) {
+					largestPrime = i;
+				}
+			}
+		}
+		return largestPrime;
 	}
 }
