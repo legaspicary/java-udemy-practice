@@ -7,7 +7,8 @@ public class Main {
 		System.out.println(BarkingDog.shouldWakeUp(true, 8));
 		System.out.println(LeapYear.isLeapYear(-1200));
 		MinutesToYearsDaysCalculator.printYearsAndDays(1_051_200);
-		InputCalculator.inputThenPrintSumAndAverage();
+//		InputCalculator.inputThenPrintSumAndAverage();
+		System.out.println(NumberOfDaysInMonth.getDaysInMonth(2, 2001));
 	}
 
 }
