@@ -19,7 +19,10 @@ public class Main {
 		System.out.println(NumberChallenges.reverse(-27));
 		NumberChallenges.numberToWords(1010);
 		System.out.println();
-		System.out.println(NumberChallenges.canPack(1, 0, 4));
+		System.out.println(NumberChallenges.canPack(5, 3, 24));
+		System.out.println(NumberChallenges.getLargestPrime(217));
+		ArtChallenges.printSquareStar(8);
+		System.out.println(PaintJob.getBucketCount(6.26, 2.2));
 	}
 
 }
