@@ -9,6 +9,7 @@ public class Main {
 		MinutesToYearsDaysCalculator.printYearsAndDays(1_051_200);
 //		InputCalculator.inputThenPrintSumAndAverage();
 		System.out.println(NumberOfDaysInMonth.getDaysInMonth(2, 2001));
+		System.out.println(NumberChecker.isPalindrome(707));
 	}
 
 }

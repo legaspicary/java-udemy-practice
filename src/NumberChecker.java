@@ -26,4 +26,15 @@ public class NumberChecker {
 		}
 
 	}
+
+	public static boolean isPalindrome(int number) {
+		number = Math.abs(number);
+		int numberCopy = number;
+		int reverse = 0;
+		while (numberCopy > 0) {
+			reverse = (reverse * 10) + (numberCopy % 10);
+			numberCopy /= 10;
+		}
+		return number == reverse;
+	}
 }
