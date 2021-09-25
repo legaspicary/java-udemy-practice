@@ -10,6 +10,16 @@ public class Main {
 //		InputCalculator.inputThenPrintSumAndAverage();
 		System.out.println(NumberOfDaysInMonth.getDaysInMonth(2, 2001));
 		System.out.println(NumberChecker.isPalindrome(707));
+		System.out.println(NumberChallenges.sumFirstAndLastDigit(1242));
+		System.out.println(NumberChallenges.getEvenDigitSum(252));
+		System.out.println(NumberChallenges.hasSharedDigit(25, 32));
+		System.out.println(NumberChallenges.getGreatestCommonDivisor(25, 15));
+		NumberChallenges.printFactors(-6);
+		System.out.println(NumberChallenges.isPerfectNumber(7));
+		System.out.println(NumberChallenges.reverse(-27));
+		NumberChallenges.numberToWords(1010);
+		System.out.println();
+		System.out.println(NumberChallenges.canPack(1, 0, 4));
 	}
 
 }
