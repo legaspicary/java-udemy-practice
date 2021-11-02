@@ -5,9 +5,17 @@ public class ThreadMain {
 //		threadAndRunnableDemo();
 //		joinThreadDemo();
 //		multiThreadDangerDemo();
-		multiThreadSyncDemo();
+//		multiThreadSyncDemo();
+		producerConsumerDemo();
 	}
 
+	public static void producerConsumerDemo() {
+		Message message = new Message();
+		(new Thread(new Writer(message))).start();
+		(new Thread(new Reader(message))).start();
+	}
+
+	// NOTE: keep synchronized code to a minimum
 	public static void multiThreadSyncDemo() {
 		SynchronizedCounter counter = new SynchronizedCounter(20);
 		Thread t1 = new Thread(new Runnable() {
