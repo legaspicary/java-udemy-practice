@@ -1,16 +1,13 @@
 package com.practice.concurrency;
 
-import java.util.List;
 import java.util.Random;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class MyProducer implements Runnable {
-	private List<String> buffer;
-	private ReentrantLock bufferLock;
+	private ArrayBlockingQueue<String> buffer;
 
-	public MyProducer(List<String> buffer, ReentrantLock bufferLock) {
+	public MyProducer(ArrayBlockingQueue<String> buffer) {
 		this.buffer = buffer;
-		this.bufferLock = bufferLock;
 	}
 
 	public void run() {
@@ -20,54 +17,46 @@ public class MyProducer implements Runnable {
 		for (String num : nums) {
 			try {
 				System.out.println("Producer is adding " + num);
-				bufferLock.lock();
-				buffer.add(num);
-				bufferLock.unlock();
+				buffer.put(num);
 				Thread.sleep(random.nextInt(1000));
 			} catch (InterruptedException e) {
 				System.out.println("Producer interrupted");
 			}
 		}
 		System.out.println("Producer is exiting");
-		bufferLock.lock();
-		buffer.add("EOF");
-		bufferLock.unlock();
+		try {
+			buffer.put("EOF");
+		} catch (InterruptedException e) {
+			System.out.println("Producer interrupted");
+		}
 	}
 
 }
 
 class MyConsumer implements Runnable {
-	private List<String> buffer;
-	private ReentrantLock bufferLock;
+	private ArrayBlockingQueue<String> buffer;
 
-	public MyConsumer(List<String> buffer, ReentrantLock bufferLock) {
+	public MyConsumer(ArrayBlockingQueue<String> buffer) {
 		this.buffer = buffer;
-		this.bufferLock = bufferLock;
 	}
 
 	public void run() {
-		int counter = 0;
 		while (true) {
-			if (bufferLock.tryLock()) {
+			synchronized (buffer) {
 				try {
-
 					if (buffer.isEmpty()) {
 						continue;
 					}
-					System.out.println("Counter is = " + counter);
-					if (buffer.get(0).equals("EOF")) {
+					if (buffer.peek().equals("EOF")) {
 						System.out.println("Consumer is exiting");
 						break;
 					} else {
-						System.out.println("Consumer has removed " + buffer.remove(0));
+						System.out.println("Consumer has removed " + buffer.take());
 					}
-				} finally {
-					bufferLock.unlock();
+				} catch (InterruptedException e) {
+					System.out.println("Consumer interrupted");
 				}
-			} else {
-				counter++;
 			}
-
 		}
 
 	}
