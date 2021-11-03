@@ -14,7 +14,98 @@ public class ThreadMain {
 //		multiThreadSyncDemo();
 //		producerConsumerDemo();
 //		concurrentPackageDemo();
-		blockingQueueDemo();
+//		blockingQueueDemo();
+//		deadlockDemo();
+//		starvationDemo();
+		fairLockDemo();
+	}
+
+	public static void fairLockDemo() {
+		String str1 = "Hello!";
+
+		Thread t1 = new Thread(new Worker(str1), "Prio 10");
+		Thread t2 = new Thread(new Worker(str1), "Prio 8");
+		Thread t3 = new Thread(new Worker(str1), "Prio 6");
+		Thread t4 = new Thread(new Worker(str1), "Prio 4");
+		Thread t5 = new Thread(new Worker(str1), "Prio 2");
+
+		t1.setPriority(10);
+		t2.setPriority(8);
+		t3.setPriority(6);
+		t4.setPriority(4);
+		t5.setPriority(2);
+
+		t4.start();
+		t5.start();
+		t2.start();
+		t3.start();
+		t1.start();
+
+	}
+
+	public static void starvationDemo() {
+		// Occurs when thread has no chance to run (e.g. lowest priority)
+		String str1 = "Hello!";
+
+		Thread t1 = new Thread(new Worker(str1), "Prio 10");
+		Thread t2 = new Thread(new Worker(str1), "Prio 8");
+		Thread t3 = new Thread(new Worker(str1), "Prio 6");
+		Thread t4 = new Thread(new Worker(str1), "Prio 4");
+		Thread t5 = new Thread(new Worker(str1), "Prio 2");
+
+		t1.setPriority(10);
+		t2.setPriority(8);
+		t3.setPriority(6);
+		t4.setPriority(4);
+		t5.setPriority(2);
+
+		t4.start();
+		t5.start();
+		t2.start();
+		t3.start();
+		t1.start();
+
+	}
+
+	public static void deadlockDemo() {
+		// Solution: take lock in the same order
+		// Caution: take care of getting locks in different orders
+		String str1 = "Hi";
+		String str2 = "Hello";
+		Thread t1 = new Thread(() -> {
+			synchronized (str1) {
+				System.out.println("Thread 1 has lock for str1");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					System.out.println("Thread 1 interrupted");
+				}
+				System.out.println("Thread 1 waiting for str2 lock");
+				synchronized (str2) {
+					System.out.println("Thread 1 has str2 lock");
+				}
+				System.out.println("Thread 1 has released lock for str1");
+			}
+		});
+
+		Thread t2 = new Thread(() -> {
+			synchronized (str1) {
+				System.out.println("Thread 2 has lock for str1");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					System.out.println("Thread 2 interrupted");
+				}
+				System.out.println("Thread 1 waiting for str2lock");
+				synchronized (str2) {
+					System.out.println("Thread 2 has str2 lock");
+				}
+				System.out.println("Thread 2 has released lock for str1");
+			}
+		});
+
+		t1.start();
+		t2.start();
 	}
 
 	public static void blockingQueueDemo() {
