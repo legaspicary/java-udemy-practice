@@ -1,7 +1,10 @@
+package com.practice.fundamentals;
+
 import java.util.Scanner;
 
 public class InputCalculator {
 	public static void inputThenPrintSumAndAverage() {
+		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		int sum = 0;
 		int counter = 0;

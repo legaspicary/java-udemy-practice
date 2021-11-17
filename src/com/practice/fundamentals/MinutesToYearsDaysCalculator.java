@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class MinutesToYearsDaysCalculator {
 	private static final long MINUTES_IN_YEAR = 525_600L;

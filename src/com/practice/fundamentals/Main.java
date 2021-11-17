@@ -1,3 +1,5 @@
+package com.practice.fundamentals;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -7,7 +9,7 @@ public class Main {
 	public static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		String completeSampleFilePath = "C:\\Users\\Cary\\eclipse-workspace\\PracticeJavaProject\\src\\Sample";
+//		String completeSampleFilePath = "C:\\Users\\Cary\\eclipse-workspace\\PracticeJavaProject\\src\\Sample";
 		try (FileWriter locFile = new FileWriter("sampletext.txt");) {
 			for (int i = 0; i < 10; i++) {
 				locFile.write(String.format("No. %d line written! using the file writer class", i + 1) + "\n");
@@ -18,13 +20,13 @@ public class Main {
 
 	}
 
-	private static int getInt() {
-		return Main.scanner.nextInt();
-	}
-
-	private static String getString() {
-		return Main.scanner.nextLine();
-	}
+//	private static int getInt() {
+//		return Main.scanner.nextInt();
+//	}
+//
+//	private static String getString() {
+//		return Main.scanner.nextLine();
+//	}
 
 	private static double getDouble() {
 		return Main.scanner.nextDouble();

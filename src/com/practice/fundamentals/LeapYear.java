@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class LeapYear {
 	public static boolean isLeapYear(int year) {

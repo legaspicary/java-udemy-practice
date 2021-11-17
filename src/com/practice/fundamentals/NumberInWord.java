@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class NumberInWord {
 	public static void printNumberInWord(int n) {

@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class MegaBytesConverter {
 	private static final int DIVISOR = 1024;

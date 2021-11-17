@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class PlayingCat {
 	public static boolean isCatPlaying(boolean summer, int temperature) {

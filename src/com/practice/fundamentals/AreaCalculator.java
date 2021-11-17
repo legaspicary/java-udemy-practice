@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class AreaCalculator {
 	public static double area(double radius) {

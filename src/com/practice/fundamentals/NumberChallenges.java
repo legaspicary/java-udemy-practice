@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class NumberChallenges {
 	public static int sumFirstAndLastDigit(int number) {

@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class ArtChallenges {
 	public static void printSquareStar(int number) {

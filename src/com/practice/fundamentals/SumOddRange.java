@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class SumOddRange {
 	public static boolean isOdd(int n) {

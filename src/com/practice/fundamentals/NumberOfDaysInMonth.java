@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class NumberOfDaysInMonth {
 	private static final int MONTH_WITH_31_DAYS = 31;

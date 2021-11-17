@@ -1,3 +1,4 @@
+package com.practice.fundamentals;
 
 public class NumberChecker {
 	public static boolean hasEqualSum(int a, int b, int c) {
